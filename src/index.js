@@ -3,11 +3,41 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AddBlog from './components/AddBlog';
+import Blogs from './components/Blogs';
+import SignIn from './components/SignIn';
+import About from './components/About'
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+
+const appRouter= createBrowserRouter([
+  {
+    path:"/",
+    element:<App/>,
+    children:[
+      {
+        path:"/",
+        element:<Blogs/>
+      },
+      {
+        path:"/about",
+        element:<About/>
+      },
+      {
+        path:"/signin",
+        element:<SignIn/>
+      },
+      {
+        path:"/addblog",
+        element:<AddBlog/>
+      },
+    ],
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={appRouter}/>
   </React.StrictMode>
 );
 
