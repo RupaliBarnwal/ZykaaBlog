@@ -11,10 +11,10 @@ const SignIn = () => {
         setPassword(e.target.value);
     }
     const handleSubmit = () => {
-        alert("your email is "  + email + " "+"and your password is" + password)
+        alert("your email is "  + email + " and your password is" + password)
     }
     return (
-        <div className=" w-3/12 h-4/6 m-auto mt-4 max-[350px]:w-6/12">
+        <div className=" w-3/12 h-4/6 m-auto mt-4 max-[410px]:w-6/12">
             <div>
                 <img src={logo} className="w-20 h-20 mx-auto" alt="logo" />
             </div>

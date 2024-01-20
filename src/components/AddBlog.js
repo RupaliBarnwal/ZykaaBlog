@@ -6,6 +6,7 @@ const AddBlog=()=>{
     const[dish, setDish]= useState("");
     const[description, setDescription]= useState("");
     const[author, setAuthor]= useState("");
+    
 
     
     const handleDishName=(e)=>{
@@ -18,12 +19,13 @@ const AddBlog=()=>{
         setAuthor(e.target.value);
     }
     const handleOnClick=(e)=>{
-//        var  obj = {};
-// obj.dish = dish;
-// obj.description = description;
-// obj.author=author;
+        e.preventDefault();
+       var  obj = {};
+obj.dish = dish;
+obj.description = description;
+obj.author=author;
 blogData.push( { dish: dish, description: description, author: author })
-// console.log(obj);
+console.log(obj);
 // blogData.push(
 //     {
 //         dish:dish,
@@ -34,7 +36,7 @@ blogData.push( { dish: dish, description: description, author: author })
 // );   
     }
     return(
-        <div className="w-4/12 m-auto mt-4 max-[350px]:w-6/12">
+        <div className="w-4/12 m-auto mt-4 max-[410px]:w-6/12">
             <form className="space-y-2">
                 <div>
                     <label>Name of the dish</label>

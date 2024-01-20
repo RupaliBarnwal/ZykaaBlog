@@ -7,7 +7,7 @@ const Header=()=>{
     return(
         <div className='flex justify-between shadow-lg top-0 overflow-hidden w-full'>
             <div>
-                <img alt="Logo" src={logo} className='w-20 h-20 p-2 pl-3'/>
+                <img alt="Logo" src={logo} className='w-20 h-20 p-2 pl-3 max-[410px]:h-15'/>
             </div>
             <div className='navbar'>
                 <ul className='flex pr-4'>
