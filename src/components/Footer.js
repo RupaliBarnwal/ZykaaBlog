@@ -1,7 +1,7 @@
 const Footer=()=>{
     return (
-        <div className="bottom-0 fixed">
-            <h1>This is a footer page</h1>
+        <div className="m-auto text-center bottom-0 left-0 bg-green-50 w-full fixed">
+            ©Copyright By Rupali Barnwal👩‍💼
         </div>
     )
 }

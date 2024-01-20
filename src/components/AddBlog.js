@@ -7,6 +7,7 @@ const AddBlog=()=>{
     const[description, setDescription]= useState("");
     const[author, setAuthor]= useState("");
     
+    const [addedBlog, setAddedBlog]=useState([blogData])
 
     
     const handleDishName=(e)=>{
@@ -25,15 +26,10 @@ obj.dish = dish;
 obj.description = description;
 obj.author=author;
 blogData.push( { dish: dish, description: description, author: author })
-console.log(obj);
-// blogData.push(
-//     {
-//         dish:dish,
-//         description:description,
-//         author:author
-
-//     },
-// );   
+addedBlog.push(obj);
+console.log(addedBlog);
+//console.log(obj); 
+alert("Thankyou for sharing your memory with us🙏")
     }
     return(
         <div className="w-4/12 m-auto mt-4 max-[410px]:w-6/12">
