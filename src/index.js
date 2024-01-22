@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import AddBlog from './components/AddBlog';
 import Blogs from './components/Blogs';
 import SignIn from './components/SignIn';
+import SignIn2 from './components/SignIn2';
 import About from './components/About'
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -24,7 +25,7 @@ const appRouter= createBrowserRouter([
       },
       {
         path:"/signin",
-        element:<SignIn/>
+        element:<SignIn2/>
       },
       {
         path:"/addblog",
