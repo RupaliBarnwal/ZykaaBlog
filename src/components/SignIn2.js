@@ -4,12 +4,13 @@ import { useForm} from 'react-hook-form';
 
 const SignIn = () => {
     const [userData, setUserData]= useState();
-    const {register, handleSubmit,reset, formState:{errors}}= useForm();
+    const {register, handleSubmit,reset, formState:{errors}, trigger}= useForm();
     
    const onSubmit=(data)=>{
         setUserData(data);
         // console.log(data);
         reset();
+        alert("Signed in Successfully")
     }
         
     return (
@@ -30,6 +31,9 @@ const SignIn = () => {
                             pattern:{
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message:"Invalid email"
                             }})}
+                            onKeyUp={() => {
+                              trigger("email");
+                            }}
                             className="block w-full"/>
                             
                         </div>
