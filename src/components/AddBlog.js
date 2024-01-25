@@ -7,39 +7,51 @@ const AddBlog=()=>{
     //const[description, setDescription]= useState("");
     //const[author, setAuthor]= useState("");
     
-    const [addedBlog, setAddedBlog]=useState([blogData])
+    // const [addedBlog, setAddedBlog]=useState([blogData])
     const [userInfo, setUserInfo]=useState({
         dish:"",description:"",author:""
     })
     const[record, setRecord]=useState([]);
-    // const handleDishName=(e)=>{
-    //     setDish(e.target.value);
-    // }
-    // const handleDescription=(e)=>{
-    //     setDescription(e.target.value);
-    // }
-    // const handleAuthor=(e)=>{
-    //     setAuthor(e.target.value);
-    // }
+    const[editButton, setEditButton]= useState(false);
+    
+    const[editIndex, setEditIndex]=useState("");
     const handleInput=(e)=>{
         const name=e.target.name;
         const value=e.target.value;
         setUserInfo({...userInfo, [name]:value});
     }
     const handleOnClick=(e)=>{
-        e.preventDefault();
-//        var  obj = {};
-// obj.dish = dish;
-// obj.description = description;
-// obj.author=author;
-blogData.push( {...userInfo })
-// addedBlog.push(obj);
-// console.log(addedBlog);
+        e.preventDefault();      
+       if(!editButton){
+        blogData.push( {...userInfo })
         const newRecord={...userInfo}
         setRecord([...record, newRecord]);
         setUserInfo({dish:"", description:"",author:""});
-
-alert("Thankyou for sharing your memory with us🙏")
+        alert("Thankyou for sharing your memory with us🙏")
+       }
+       else{
+        const tempData= record;
+        Object.assign(tempData[editIndex], userInfo)
+        setUserInfo({dish:"", description:"",author:""});
+        setEditButton(false);
+        alert("Thankyou for sharing your memory with us🙏")
+       }
+       record.map((item, index)=>(
+        console.log(index)))
+        console.log(record);
+    }
+    
+    const handleDelete=(index)=>{
+        const filterData= record.filter((item,i)=> i!==index);
+        setRecord(filterData);
+        
+    }
+    const handleEdit=(index)=>{
+        const temp= record[index];
+        setUserInfo({dish:temp.dish, description:temp.description,author:temp.author})
+        setEditButton(true);
+        setEditIndex(index);
+        
     }
     return(
         <div>
@@ -64,21 +76,39 @@ alert("Thankyou for sharing your memory with us🙏")
                     </div>
                 </div>
                 <div>
-                    <button className="bg-blue-400 w-full rounded-sm" onClick={handleOnClick}>Add this to the blogs</button>
+                    <button className="bg-blue-400 w-full rounded-sm" onClick={handleOnClick}>{editButton ? "Update this Blog": "Add this to the blogs"}</button>
                 </div>
             </form>
             
         </div>
-        <div className="m-5 text-center">
-        {record.map((item, id)=>{
-            return(
-                <div className="flex" key="id">
-                    <p>dish: {item.dish}&nbsp;  </p>
-                    <p> description: {item.description}&nbsp;</p>
-                    <p> author: {item.author}&nbsp;</p>
-                </div>
-            )
-        })}
+    <div >
+        <table className=" mt-5 w-full text-center">
+            <thead>
+                <tr>
+                    <th>Dish</th>
+                    <th>Description</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {record.map((item, index)=>(
+                <tr key="index">
+                    <td>{item.dish}  </td>
+                    <td>{item.description}</td>
+                    <td>{item.author}</td>
+                    <td>
+                        <button className="bg-yellow-200 p-1 m-1"onClick={()=>handleEdit(index)}>Edit</button>
+                    </td>
+                    <td>
+                        <button className="bg-red-200 p-1 m-1" onClick={()=>handleDelete(index)}>Delete</button>
+                        
+                    </td>
+                    </tr>
+            ))}
+                
+            </tbody>
+        </table>
     </div>
         </div>
     )
